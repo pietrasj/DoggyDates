@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8384EDEF350B24B11F3AE314 /* Pods_DoggyDates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACF1CDA92387EED9598B8B6 /* Pods_DoggyDates.framework */; };
 		AF013CF31EC566C4000D91BA /* ViewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF013CF21EC566C4000D91BA /* ViewProfileViewController.swift */; };
+		AF015F4B1ED12C6200056164 /* EditProfileViewController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF015F4A1ED12C6200056164 /* EditProfileViewController+handlers.swift */; };
+		AF03F5C61EC9A5BE006D9E77 /* ImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F5C51EC9A5BE006D9E77 /* ImageCard.swift */; };
+		AF03F5C81EC9A694006D9E77 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F5C71EC9A694006D9E77 /* CardView.swift */; };
 		AF0586561EC08C1200AB41DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF0586551EC08C1200AB41DD /* GoogleService-Info.plist */; };
 		AF48FB961EC2D8D90088BE0E /* ProfilePageOneViewController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF48FB951EC2D8D90088BE0E /* ProfilePageOneViewController+handlers.swift */; };
 		AF48FB981EC344560088BE0E /* ProfilePageTwoViewController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF48FB971EC344560088BE0E /* ProfilePageTwoViewController+handlers.swift */; };
@@ -30,6 +33,9 @@
 
 /* Begin PBXFileReference section */
 		AF013CF21EC566C4000D91BA /* ViewProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProfileViewController.swift; sourceTree = "<group>"; };
+		AF015F4A1ED12C6200056164 /* EditProfileViewController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EditProfileViewController+handlers.swift"; sourceTree = "<group>"; };
+		AF03F5C51EC9A5BE006D9E77 /* ImageCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCard.swift; sourceTree = "<group>"; };
+		AF03F5C71EC9A694006D9E77 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardView.swift; path = ../CardView.swift; sourceTree = "<group>"; };
 		AF0586551EC08C1200AB41DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF48FB951EC2D8D90088BE0E /* ProfilePageOneViewController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfilePageOneViewController+handlers.swift"; sourceTree = "<group>"; };
 		AF48FB971EC344560088BE0E /* ProfilePageTwoViewController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfilePageTwoViewController+handlers.swift"; sourceTree = "<group>"; };
@@ -87,6 +93,26 @@
 			name = "Profile Setup";
 			sourceTree = "<group>";
 		};
+		AF015F4C1ED1311800056164 /* Viewing and Editing Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AF013CF21EC566C4000D91BA /* ViewProfileViewController.swift */,
+				AFF13D7B1EC5926700CAA55C /* EditProfileViewController.swift */,
+				AF015F4A1ED12C6200056164 /* EditProfileViewController+handlers.swift */,
+			);
+			name = "Viewing and Editing Profile";
+			sourceTree = "<group>";
+		};
+		AF0CBFA41ECD802F00F30E9E /* Browse for Friends */ = {
+			isa = PBXGroup;
+			children = (
+				AF48FB991EC34A810088BE0E /* BrowseFriendsViewController.swift */,
+				AF03F5C51EC9A5BE006D9E77 /* ImageCard.swift */,
+				AF03F5C71EC9A694006D9E77 /* CardView.swift */,
+			);
+			name = "Browse for Friends";
+			sourceTree = "<group>";
+		};
 		AF574F091EC4474000149E98 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +150,8 @@
 		AFFD39BD1EB9B8C60007B744 /* DoggyDates */ = {
 			isa = PBXGroup;
 			children = (
+				AF015F4C1ED1311800056164 /* Viewing and Editing Profile */,
+				AF0CBFA41ECD802F00F30E9E /* Browse for Friends */,
 				AF013CF11EC562DD000D91BA /* Profile Setup */,
 				AF574F101EC489DB00149E98 /* Helpers */,
 				AF574F091EC4474000149E98 /* Model */,
@@ -135,10 +163,7 @@
 				AFFD39CD1EB9B8C60007B744 /* Info.plist */,
 				AF0586551EC08C1200AB41DD /* GoogleService-Info.plist */,
 				AFFD39C51EB9B8C60007B744 /* DoggyDates.xcdatamodeld */,
-				AF48FB991EC34A810088BE0E /* BrowseFriendsViewController.swift */,
 				AF574F0E1EC47E6500149E98 /* SettingsMenuViewController.swift */,
-				AF013CF21EC566C4000D91BA /* ViewProfileViewController.swift */,
-				AFF13D7B1EC5926700CAA55C /* EditProfileViewController.swift */,
 			);
 			path = DoggyDates;
 			sourceTree = "<group>";
@@ -187,6 +212,7 @@
 					AFFD39BA1EB9B8C60007B744 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 24SM6522LU;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -286,9 +312,12 @@
 				AFFFE90D1EBAFCE50021F044 /* ProfilePageTwoViewController.swift in Sources */,
 				AFFD39BF1EB9B8C60007B744 /* AppDelegate.swift in Sources */,
 				AF574F0F1EC47E6500149E98 /* SettingsMenuViewController.swift in Sources */,
+				AF03F5C61EC9A5BE006D9E77 /* ImageCard.swift in Sources */,
+				AF015F4B1ED12C6200056164 /* EditProfileViewController+handlers.swift in Sources */,
 				AFFFE90F1EBB10F40021F044 /* ProfilePageThreeViewController.swift in Sources */,
 				AFFD39C71EB9B8C60007B744 /* DoggyDates.xcdatamodeld in Sources */,
 				AF574F0B1EC4475C00149E98 /* User.swift in Sources */,
+				AF03F5C81EC9A694006D9E77 /* CardView.swift in Sources */,
 				AF574F121EC489F400149E98 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,11 +440,14 @@
 			baseConfigurationReference = CCDAA01A7925812B824B0F2E /* Pods-DoggyDates.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 24SM6522LU;
 				INFOPLIST_FILE = DoggyDates/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = deakin.DoggyDates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -425,11 +457,13 @@
 			baseConfigurationReference = EA95607DAAFCA8F70AE0C5EB /* Pods-DoggyDates.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 24SM6522LU;
 				INFOPLIST_FILE = DoggyDates/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = deakin.DoggyDates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

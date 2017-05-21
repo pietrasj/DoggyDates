@@ -11,7 +11,6 @@ import UIKit
 extension ProfilePageOneViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func handledSelectProfileImage() {
-        print(123)
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true

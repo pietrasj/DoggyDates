@@ -29,15 +29,15 @@ class CardView: UIView {
         self.layer.borderWidth = 2
         self.layer.cornerRadius = 10
         
-        // add animations for pan gestures in here
-        // labels on top left and right
-        
+        // PASS / LIKE labels on top left and right
         let padding: CGFloat = 20
         
+        // LIKE
         greenLabel = CardViewLabel(origin: CGPoint(x: padding, y: padding), color: UIColor(red: 67/255, green: 136/255, blue: 204/255, alpha: 1.0))
         greenLabel.isHidden = true
         self.addSubview(greenLabel)
         
+        // PASS
         redLabel = CardViewLabel(origin: CGPoint(x: frame.width - CardViewLabel.size.width - padding, y: padding), color: UIColor.red)
         redLabel.isHidden = true
         self.addSubview(redLabel)
@@ -130,7 +130,7 @@ class CardViewLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        // style of LIKE / PASS frame
         self.textColor = .white
         self.font = UIFont.boldSystemFont(ofSize: 48)
         self.textAlignment = .center

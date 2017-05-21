@@ -15,34 +15,33 @@
 
 
 import UIKit
-
+import Firebase
+import FirebaseDatabase
 
 class BrowseFriendsViewController: UIViewController {
 
     // divisor variable for image rotation.
     var divisor: CGFloat!
     var anotherDivisor: CGFloat!
-    var judgementDivisor: CGFloat!
-    var anotherJudgementDivisor: CGFloat!
     
     @IBOutlet var noMoreLbl: UILabel!
-    @IBOutlet var cardStack: UIView!
-    @IBOutlet var judgementImage: UIImageView!
     
     var users = [User]()
     var cards = [ImageCard]()
     
+    // Scale and alpha of successive cards visible to the user
+    let cardAttributes: [(downscale: CGFloat, alpha: CGFloat)] = [(1, 1), (1, 1), (1, 1), (1, 1)]
+    let cardInteritemSpacing: CGFloat = 15
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         
-        // calculation for gradual rotation of card to 35 degrees (0.61 radian)
+        // rotate card to the right on button click
         divisor = (view.frame.width / 2) / 0.61
+        // rotate card to the left on button click
         anotherDivisor = (view.frame.width / 2) / -0.61
-        // calculation for gradual rotation of judgement image 0.35 radian
-        judgementDivisor = (view.frame.width / 2) / 0.50
-        // calculation for gradual rotation of judgement image 0.35 radian
-        anotherJudgementDivisor = (view.frame.width / 2) / -0.50
+        
+        dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
 
         // 1. create a deck of cards
         for _ in 1...5 {
@@ -59,10 +58,6 @@ class BrowseFriendsViewController: UIViewController {
         // 2. layout the first 4 cards for the user
         layoutCards()
     }
-    
-    // Scale and alpha of successive cards visible to the user
-    let cardAttributes: [(downscale: CGFloat, alpha: CGFloat)] = [(1, 1), (0.92, 0.8), (0.84, 0.6), (0.76, 0.4)]
-    let cardInteritemSpacing: CGFloat = 15
     
     // Set up the frames, alphas, and transforms of the first 4 cards on the screen
     func layoutCards() {
@@ -271,44 +266,34 @@ class BrowseFriendsViewController: UIViewController {
     }
     
     @IBAction func crossBtn(_ sender: UIButton) {
-        // perform same animations as swipe gesture
         let middle = view.frame.width / 2
         
-        // move card off to the right of the screen
-        UIView.animate(withDuration: 0.75, animations: {
-            self.cardStack.center = CGPoint(x: self.cardStack.center.x - 200, y: self.cardStack.center.y + 75)
-            self.cardStack.alpha = 0
-            // card view rotation and scale
+        UIView.animate(withDuration: 0.75) {
+            self.cards[0].center = CGPoint(x: self.view.center.x - 200, y: self.view.center.y + 75)
+            self.cards[0].alpha = 0
             let scale = min(60/abs(middle),1)
-            self.cardStack.transform = CGAffineTransform(rotationAngle: middle / self.anotherDivisor).scaledBy(x: scale, y: scale)
-            self.judgementImage.transform = CGAffineTransform(rotationAngle: middle / self.anotherJudgementDivisor)
-            self.judgementImage.image = UIImage(named: "pass")
-            self.judgementImage.alpha = 1
-            // offset Like image
-            self.judgementImage.center = CGPoint(x: self.cardStack.center.x - 50, y: 60)
-        })
-        return
+            self.cards[0].transform = CGAffineTransform(rotationAngle: middle / self.anotherDivisor).scaledBy(x: scale, y: scale)
+        }
+        // hide that top card
+        hideFrontCard()
+        // bring second card to top
+        showNextCard()
     }
     
     
     @IBAction func heartBtn(_ sender: UIButton) {
-        // perform same animations as swipe gesture
         let middle = view.frame.width / 2
         
-        // move card off to the right of the screen
-        UIView.animate(withDuration: 0.75, animations: {
-            self.cardStack.center = CGPoint(x: self.cardStack.center.x + 200, y: self.cardStack.center.y + 75)
-            self.cardStack.alpha = 0
-            // card view rotation and scale
+        UIView.animate(withDuration: 0.75) {
+            self.cards[0].center = CGPoint(x: self.view.center.x + 200, y: self.view.center.y + 75)
+            self.cards[0].alpha = 0
             let scale = min(60/abs(middle),1)
-            self.cardStack.transform = CGAffineTransform(rotationAngle: middle / self.divisor).scaledBy(x: scale, y: scale)
-            self.judgementImage.transform = CGAffineTransform(rotationAngle: middle / self.judgementDivisor)
-            self.judgementImage.image = UIImage(named: "like")
-            self.judgementImage.alpha = 1
-            // offset Like image
-            self.judgementImage.center = CGPoint(x: self.cardStack.center.x - 50, y: 60)
-        })
-        return
+            self.cards[0].transform = CGAffineTransform(rotationAngle: middle / self.divisor).scaledBy(x: scale, y: scale)
+        }
+        // hide that top card
+        hideFrontCard()
+        // bring second card to top
+        showNextCard()
     }
     
     @IBAction func infoBtn(_ sender: UIButton) {

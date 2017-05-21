@@ -58,7 +58,7 @@ class ViewProfileViewController: UIViewController {
                 self.users.append(user)
                 print(user.name1, user.email)
                 
-                // reloading table in dispatch queue so app doesn't crash
+                // reloading photos in dispatch queue so app doesn't crash
                 DispatchQueue.main.async {
                     self.loadImages()
                 }
@@ -97,6 +97,7 @@ class ViewProfileViewController: UIViewController {
                 
                 if let petProfileImageUrl = dictionary["petProfileImageUrl"] as? String {
                     self.petImageLarge.loadImageUsingCacheWithURLString(urlString: petProfileImageUrl)
+                    self.petImageLarge.contentMode = UIViewContentMode.scaleAspectFit
                 }
             }
             

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import Firebase
+import FirebaseStorage
 
 class EditProfileViewController: UIViewController {
 
@@ -42,8 +45,16 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set touch handler on profile image
+        petImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handledSelectProfileImage)))
+        petImage.isUserInteractionEnabled = true
+        loadProfileData()
+        
     }
 
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

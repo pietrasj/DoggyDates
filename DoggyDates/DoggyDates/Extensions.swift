@@ -36,8 +36,9 @@ extension UIImageView {
                 
                 if let downloadImage = UIImage(data:data!) {
                     imageCache.setObject(downloadImage, forKey: urlString as AnyObject)
-                
+                    
                     self.image = downloadImage
+                    
                 }
 
             }

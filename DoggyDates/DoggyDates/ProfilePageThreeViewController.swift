@@ -12,7 +12,7 @@ class ProfilePageThreeViewController: UIViewController {
 
     @IBOutlet weak var thanksLbl: UILabel!
     @IBOutlet weak var startSearchingLbl: UILabel!
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

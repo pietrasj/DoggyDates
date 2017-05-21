@@ -15,10 +15,13 @@ class User: NSObject {
     var email: String?
     var dob: String?
     var gender: String?
+    var userBio: String?
     var petName: String?
     var petAge: String?
     var petGender: String?
+    var petBreed: String?
     var petAgeMMYY: String?
+    var petBio: String?
     var profileImageUrl: String?
     var petProfileImageUrl: String?
 }

@@ -53,10 +53,10 @@ class ViewProfileViewController: UIViewController {
     func fetchUser() {
         FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String : AnyObject] {
-                let user = User()
-                user.setValuesForKeys(dictionary)
-                self.users.append(user)
-                print(user.name1, user.email)
+                //let user = User()
+                //user.setValuesForKeys(dictionary)
+                //self.users.append(user)
+                //print("get to the view profile page")
                 
                 // reloading photos in dispatch queue so app doesn't crash
                 DispatchQueue.main.async {
@@ -76,23 +76,29 @@ class ViewProfileViewController: UIViewController {
                 let pName = dictionary["petName"] as! String
                 let pAge = dictionary["petAge"] as! String
                 let pMY = dictionary["petAgeMMYY"] as! String
+                let pBio = dictionary["petBio"] as! String
                 self.petNameLbl.text = "\(pName), \(pAge) \(pMY) old"
+                self.petDescriptionLbl.text = "\(pBio)"
                 
                 let oName1 = dictionary["name1"] as! String
                 let oName2 = dictionary["name2"] as! String
                 let oAge = dictionary["dob"] as! String
+                let oBio = dictionary["userBio"] as! String
                 
                 
                 if oName2 != "" {
                     self.ownerNameLbl.text = "\(oName1) & \(oName2) - \(oAge)"
+                    self.ownerDesciptionLbl.text = "\(oBio)"
                 } else {
                     self.ownerNameLbl.text = "\(oName1)"
+                    self.ownerDesciptionLbl.text = "\(oBio)"
                 }
                 
                 
                 
                 if let profileImageUrl = dictionary["profileImageUrl"] as? String {
                     self.ownerImage.loadImageUsingCacheWithURLString(urlString: profileImageUrl)
+                    self.ownerImage.contentMode = UIViewContentMode.scaleAspectFit
                 }
                 
                 if let petProfileImageUrl = dictionary["petProfileImageUrl"] as? String {

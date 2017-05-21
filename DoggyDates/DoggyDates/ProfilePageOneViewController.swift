@@ -30,6 +30,7 @@ class ProfilePageOneViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var coupleAgeSelected: UISegmentedControl!
     @IBOutlet weak var coupleAgeSelected2: UISegmentedControl!
     
+    @IBOutlet var loadSpinner: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,6 +74,8 @@ class ProfilePageOneViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func profilePgOneNextBtn(_ sender: UIButton) {
+        spinnerAnimation()
+        
         // ensure data is linked to user that just registered
         let uid = FIRAuth.auth()?.currentUser?.uid
         
@@ -111,6 +114,7 @@ class ProfilePageOneViewController: UIViewController, UITextFieldDelegate {
         // single male selected
         if maritalStatusSelected.selectedSegmentIndex == 0 {
             let male = "male"
+            let emptyBio = "Edit profile to add a Bio"
             // save profile image to firebase
             let imageName = NSUUID().uuidString
             let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).png")
@@ -121,7 +125,7 @@ class ProfilePageOneViewController: UIViewController, UITextFieldDelegate {
                         return
                     }
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-                        let values = ["name1": name1, "name2": name2,"dob": birth, "gender": male, "profileImageUrl": profileImageUrl]
+                        let values = ["name1": name1, "name2": name2,"dob": birth, "gender": male, "userBio": emptyBio, "profileImageUrl": profileImageUrl]
                         self.registerUserIntoDatabaseWithUID(uid: uid!, values: values as [String : AnyObject])
                     }
                 })
@@ -131,6 +135,7 @@ class ProfilePageOneViewController: UIViewController, UITextFieldDelegate {
             // single female selected
         else if maritalStatusSelected.selectedSegmentIndex == 1 {
             let female = "female"
+             let emptyBio = "Edit profile to add a Bio"
             // save profile image to firebase
             let imageName = NSUUID().uuidString
             let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).png")
@@ -141,7 +146,7 @@ class ProfilePageOneViewController: UIViewController, UITextFieldDelegate {
                         return
                     }
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-                        let values = ["name1": name1, "name2": name2,"dob": birth, "gender": female, "profileImageUrl": profileImageUrl]
+                        let values = ["name1": name1, "name2": name2,"dob": birth, "gender": female, "userBio": emptyBio, "profileImageUrl": profileImageUrl]
                         self.registerUserIntoDatabaseWithUID(uid: uid!, values: values as [String : AnyObject])
                     }
                 })
@@ -150,6 +155,7 @@ class ProfilePageOneViewController: UIViewController, UITextFieldDelegate {
             // couple selected
         else if maritalStatusSelected.selectedSegmentIndex == 2 {
             let couple = "couple"
+             let emptyBio = "Edit profile to add a Bio"
             // save profile image to firebase
             let imageName = NSUUID().uuidString
             let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).png")
@@ -160,15 +166,27 @@ class ProfilePageOneViewController: UIViewController, UITextFieldDelegate {
                         return
                     }
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-                        let values = ["name1": couple1Name, "name2": couple2Name,"dob": coupleAge, "gender": couple, "profileImageUrl": profileImageUrl]
+                        let values = ["name1": couple1Name, "name2": couple2Name,"dob": coupleAge, "gender": couple, "userBio": emptyBio, "profileImageUrl": profileImageUrl]
                         self.registerUserIntoDatabaseWithUID(uid: uid!, values: values as [String : AnyObject])
                     }
+                    self.loadSpinner.stopAnimating()
+                    self.performSegue(withIdentifier: "profileSetupPg1ToPg2", sender: self)
                 })
             }
         }
         
+
     }
     
+    func spinnerAnimation() {
+        loadSpinner.isHidden = false
+        // if loadSpinner is not animated
+        if loadSpinner.isAnimating == false {
+            // start animation
+            loadSpinner.startAnimating()
+        }
+    }
+
     private func registerUserIntoDatabaseWithUID(uid: String, values: [String: AnyObject]) {
 
         let ref = FIRDatabase.database().reference(fromURL: "https://doggydates-384b3.firebaseio.com/")
@@ -182,8 +200,11 @@ class ProfilePageOneViewController: UIViewController, UITextFieldDelegate {
             }
             print("Added additional details to user")
             print(values)
+            
         })
     }
+    
+    
     
     func handleLogout() {
         // sign user out

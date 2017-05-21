@@ -43,11 +43,14 @@ class ImageCard: CardView {
                     self.addSubview(self.imageView)
                     self.addSubview(petNameLbl)
                 }
-                let pName = dictionary["petName"] as! String
-                let pAge = dictionary["petAge"] as! String
-                let pMY = dictionary["petAgeMMYY"] as! String
-                petNameLbl.text = "\(pName), \(pAge) \(pMY) old"
-                petNameLbl.frame = CGRect(x: 12, y: self.imageView.frame.maxY + 15, width: 200, height: 24)
+                if snapshot != nil {
+                    let pName = dictionary["petName"] as! String
+                    let pAge = dictionary["petAge"] as! String
+                    let pMY = dictionary["petAgeMMYY"] as! String
+                    petNameLbl.text = "\(pName), \(pAge) \(pMY) old"
+                    petNameLbl.frame = CGRect(x: 12, y: self.imageView.frame.maxY + 15, width: 200, height: 24)
+                }
+                
             }
             
             

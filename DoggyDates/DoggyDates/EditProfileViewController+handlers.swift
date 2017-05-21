@@ -33,6 +33,7 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
         
         if let selectedImage = selectedImageFromPicker {
             petImage.image = selectedImage
+            
         }
         
         dismiss(animated: true, completion: nil)
@@ -47,34 +48,61 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
         let uid = FIRAuth.auth()?.currentUser?.uid
         FIRDatabase.database().reference().child("users").child(uid!).observe(.value, with: { (snapshot) in
             
-            //print(snapshot)
+            // load Pet and Owner information into text fields
+            
             if let dictionary = snapshot.value as? [String : AnyObject] {
                 let pName = dictionary["petName"] as! String
                 let pAge = dictionary["petAge"] as! String
                 let pMY = dictionary["petAgeMMYY"] as! String
-                self.petNameLbl.text = "\(pName), \(pAge) \(pMY) old"
-                
+                let pGender = dictionary["petGender"] as! String
+                let pBreed = dictionary["petBreed"] as! String
+                let pBioChg = dictionary["petBio"] as! String
                 let oName1 = dictionary["name1"] as! String
-                let oName2 = dictionary["name2"] as! String
-                let oAge = dictionary["dob"] as! String
+                let oBioChg = dictionary["userBio"] as! String
                 
-                
-                if oName2 != "" {
-                    self.ownerNameLbl.text = "\(oName1) & \(oName2) - \(oAge)"
-                } else {
-                    self.ownerNameLbl.text = "\(oName1)"
+                    self.maritalSelectionSC.selectedSegmentIndex = 0
+                    self.ownerNameTxtFld.text = "\(oName1)"
+                    self.ownerSavedNameLbl.text = "\(oName1)"
+                self.ownerDescriptionTxtFld.text = "\(oBioChg)"
+                    
+                if let profileImageUrl = dictionary["profileImageUrl"] as? String {
+                    self.ownerImage.loadImageUsingCacheWithURLString(urlString: profileImageUrl)
+                    self.ownerImage.contentMode = UIViewContentMode.scaleAspectFit
                 }
                 
-                
-                
-//                if let profileImageUrl = dictionary["profileImageUrl"] as? String {
-//                    self.ownerImage.loadImageUsingCacheWithURLString(urlString: profileImageUrl)
-//                }
+                self.petNameTxtFld.text = "\(pName)"
+                self.petAgeTxtFld.text = "\(pAge)"
+                self.petBreedTxtFld.text = "\(pBreed)"
+                self.petDesciptionTxtFld.text = "\(pBioChg)"
+                switch self.petAgeSC.selectedSegmentIndex {
+                case 0:
+                    if pMY == "Months" {
+                        self.petAgeSC.selectedSegmentIndex = 0
+                    }
+                case 1:
+                    if pMY == "Years" {
+                        self.petAgeSC.selectedSegmentIndex = 1
+                    }
+                default: break
+                }
+                switch self.petGenderSC.selectedSegmentIndex {
+                case 0:
+                    if pGender == "Male" {
+                        self.petAgeSC.selectedSegmentIndex = 0
+                    }
+                case 1:
+                    if pGender == "Female" {
+                        self.petAgeSC.selectedSegmentIndex = 1
+                    }
+                default: break
+                }
                 
                 if let petProfileImageUrl = dictionary["petProfileImageUrl"] as? String {
                     self.petImage.loadImageUsingCacheWithURLString(urlString: petProfileImageUrl)
                     self.petImage.contentMode = UIViewContentMode.scaleAspectFit
                 }
+                
+                
             }
             
         }, withCancel: nil)

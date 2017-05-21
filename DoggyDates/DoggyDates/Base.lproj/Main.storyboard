@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WkI-3q-rmu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -193,7 +193,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDN-Hr-diy">
-                                <rect key="frame" x="166" y="281" width="78" height="21"/>
+                                <rect key="frame" x="166" y="272" width="193" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
@@ -262,7 +262,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sap-IQ-FCK">
-                                            <rect key="frame" x="174" y="72" width="81" height="26"/>
+                                            <rect key="frame" x="174" y="63" width="193" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <nil key="textColor"/>
@@ -301,7 +301,7 @@
             </objects>
             <point key="canvasLocation" x="1844" y="743.47826086956525"/>
         </scene>
-        <!--Edit Profile-->
+        <!--Profile-->
         <scene sceneID="Ecl-VY-Kz7">
             <objects>
                 <viewController id="hfQ-mx-blm" customClass="ViewProfileViewController" customModule="DoggyDates" customModuleProvider="target" sceneMemberID="viewController">
@@ -337,7 +337,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit your profile to add a desciption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaV-rE-mFP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaV-rE-mFP">
                                 <rect key="frame" x="16" y="488" width="343" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
@@ -348,7 +348,7 @@
                                 <rect key="frame" x="14" y="404" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit your profile to add a desciption" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOG-HB-4t3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOG-HB-4t3">
                                 <rect key="frame" x="16" y="314" width="343" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
@@ -359,7 +359,7 @@
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Edit Profile" id="Bdy-37-V9G">
+                    <navigationItem key="navigationItem" title="Profile" id="Bdy-37-V9G">
                         <barButtonItem key="rightBarButtonItem" image="Edit-50" id="mRe-bM-0q0">
                             <connections>
                                 <segue destination="YMp-89-EOp" kind="show" id="eUQ-vK-vz1"/>
@@ -380,7 +380,7 @@
             </objects>
             <point key="canvasLocation" x="2640.8000000000002" y="742.5787106446777"/>
         </scene>
-        <!--Edit Profile View Controller-->
+        <!--Edit Profile-->
         <scene sceneID="Dip-1M-nkU">
             <objects>
                 <viewController id="YMp-89-EOp" customClass="EditProfileViewController" customModule="DoggyDates" customModuleProvider="target" sceneMemberID="viewController">
@@ -405,7 +405,7 @@
                                     <action selector="petOwnerChoiceSC:" destination="YMp-89-EOp" eventType="valueChanged" id="kbG-ZA-sya"/>
                                 </connections>
                             </segmentedControl>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gXU-Zi-CDd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gXU-Zi-CDd">
                                 <rect key="frame" x="16" y="101" width="343" height="162"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -493,14 +493,14 @@
                                         <rect key="frame" x="16" y="13" width="70" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQ9-m8-lQ6">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQ9-m8-lQ6">
                                         <rect key="frame" x="106" y="28" width="189" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tps-Fh-W9f">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tps-Fh-W9f">
                                         <rect key="frame" x="106" y="53" width="199" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Change your Profile Photo">
@@ -559,6 +559,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Edit Profile" id="g1j-aY-42k">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="V9V-C8-xjl">
+                            <connections>
+                                <action selector="saveChanges:" destination="YMp-89-EOp" id="l9b-l3-lyw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="aboutPetLbl" destination="lQr-Jt-JSe" id="JSb-su-l2h"/>
                         <outlet property="maritalSelectionSC" destination="pvk-ue-hqc" id="tDl-eP-7YR"/>
@@ -654,7 +662,7 @@
                                 </state>
                                 <connections>
                                     <action selector="profilePgOneNextBtn:" destination="kUS-BT-BNN" eventType="touchUpInside" id="UgF-Iy-1Mu"/>
-                                    <segue destination="GnJ-ZB-jNE" kind="showDetail" id="2ms-Ee-Fz3"/>
+                                    <segue destination="GnJ-ZB-jNE" kind="showDetail" identifier="profileSetupPg1ToPg2" id="2ms-Ee-Fz3"/>
                                 </connections>
                             </button>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y9h-9n-wW5">
@@ -715,6 +723,11 @@
                                     <segue destination="a0p-Xs-Lfv" kind="unwind" unwindAction="unWindSegueWithSegue:" id="drW-aE-LlB"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fWR-37-8AD">
+                                <rect key="frame" x="169" y="328" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.2616293728351593" green="0.53503251075744629" blue="0.80126231908798218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -725,6 +738,7 @@
                         <outlet property="coupleLbl" destination="KGU-l1-2d2" id="SqH-q7-ZgC"/>
                         <outlet property="coupleOneFNameTxtFld" destination="y9h-9n-wW5" id="wbb-07-9Fi"/>
                         <outlet property="coupleTwoFNTxtFld" destination="RXz-ha-qpk" id="3UN-gU-7L3"/>
+                        <outlet property="loadSpinner" destination="fWR-37-8AD" id="rgz-CM-aEu"/>
                         <outlet property="maritalStatusSelected" destination="ZXN-4H-Xeq" id="tkW-Bu-XPT"/>
                         <outlet property="profileImg" destination="dON-kD-hz5" id="ih9-en-6aV"/>
                         <outlet property="singleDoBTxtFld" destination="6RR-mw-q3f" id="dZk-ek-est"/>
@@ -828,15 +842,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="A9N-hN-ud8">
+                                <rect key="frame" x="173" y="328" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.2616293728351593" green="0.53503251075744629" blue="0.80126231908798218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="disclaimerLbl" destination="YsV-qg-nQV" id="4pR-vz-dfZ"/>
+                        <outlet property="loadSpinner" destination="A9N-hN-ud8" id="qmA-nc-TvH"/>
                         <outlet property="petAgeSelected" destination="aja-yp-xgj" id="ULo-EQ-jPf"/>
                         <outlet property="petAgeTxtFld" destination="UKa-VG-oRH" id="J2C-Jy-OtM"/>
-                        <outlet property="petBreedTxtFld" destination="gvZ-LG-ym9" id="NRx-cn-f9t"/>
+                        <outlet property="petBreedTxtFld" destination="gvZ-LG-ym9" id="RWC-mY-yqs"/>
                         <outlet property="petNameTxtFld" destination="WbU-Y6-wDH" id="OQo-fg-Tna"/>
                         <outlet property="petProfileImg" destination="DBM-YX-dFk" id="gKI-Or-7v4"/>
                         <outlet property="petSexSelected" destination="BJG-Ix-Efq" id="YT2-Up-ElI"/>

@@ -12,7 +12,7 @@ import Firebase
 import FirebaseStorage
 
 class EditProfileViewController: UIViewController {
-
+    
     
     @IBOutlet var petOwnerSC: UISegmentedControl!
     // fields for Pet Profile
@@ -41,10 +41,91 @@ class EditProfileViewController: UIViewController {
     @IBOutlet var ownerView: UIView!
     @IBOutlet var ownerSavedNameLbl: UILabel!
     @IBOutlet var ownerChangePhotoBtn: UIButton!
+
     
+    @IBAction func saveChanges(_ sender: UIBarButtonItem) {
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        // save profile image to firebase
+        let imageName = NSUUID().uuidString
+        let storageRef = FIRStorage.storage().reference().child("pet_profile_images").child("\(imageName).png")
+        if let uploadData = UIImagePNGRepresentation(self.petImage.image!) {
+            storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                if error != nil {
+                    print(error ?? "")
+                    return
+                }
+                
+                
+                if let petProfileImageUrl = metadata?.downloadURL()?.absoluteString {
+                    // pet information pre-loaded and available for editing.
+                    let pNameChg = self.petNameTxtFld.text
+                    let pAgeChg = self.petAgeTxtFld.text
+                    let pBreedChg = self.petBreedTxtFld.text
+                    let pBioChg = self.petDesciptionTxtFld.text
+                    var pGenderChg : String!
+                    var pAgeMYChg : String!
+                    if self.petGenderSC.selectedSegmentIndex == 0 {
+                        pGenderChg = "Male"
+                    } else if self.petGenderSC.selectedSegmentIndex == 1 {
+                        pGenderChg = "Female"
+                    }
+                    if self.petAgeSC.selectedSegmentIndex == 0 {
+                        pAgeMYChg = "Months"
+                    } else if self.petAgeSC.selectedSegmentIndex == 0 {
+                        pAgeMYChg = "Years"
+                    }
+                    
+                    let oName1Chg = self.ownerNameTxtFld.text
+                    let oBioChg = self.ownerDescriptionTxtFld.text
+                    
+                    
+                    
+                    
+                    
+                    // values to be updated against user profile
+                    let value1 = ["name1": oName1Chg]
+                    let value2 = ["userBio": oBioChg]
+                    let value3 = ["petName": pNameChg]
+                    let value4 = ["petAge": pAgeChg]
+                    let value5 = ["petBreed": pBreedChg]
+                    let value6 = ["petAgeMMYY": pAgeMYChg]
+                    let value7 = ["petGender": pGenderChg]
+                    let value8 = ["petBio": pBioChg]
+
+                    let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
+                    changeRequest?.commitChanges(completion: { (error) in
+                        if error != nil {
+                            print(error ?? "")
+                        }
+                        else
+                        {
+                            let userRef = FIRDatabase.database().reference()//.child("users").child(uid)
+                            userRef.child("users").child(uid!).setValue(value1)
+                            userRef.child("users").child(uid!).setValue(value2)
+                            userRef.child("users").child(uid!).setValue(value3)
+                            userRef.child("users").child(uid!).setValue(value4)
+                            userRef.child("users").child(uid!).setValue(value5)
+                            userRef.child("users").child(uid!).setValue(value8)
+                            userRef.child("users").child(uid!).setValue(value6)
+                            userRef.child("users").child(uid!).setValue(value7)
+                            print("Updated user information!")
+                        }
+                    })
+
+                    
+//                    self.updateUserIntoDatabaseWithUID(uid: uid!, values: value1, value2, value3, value4, value5, value6, value7, value8 as [String : AnyObject])
+                    
+                }
+            })
+        }
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         // set touch handler on profile image
         petImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handledSelectProfileImage)))
@@ -52,8 +133,8 @@ class EditProfileViewController: UIViewController {
         loadProfileData()
         
     }
-
-
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -114,5 +195,5 @@ class EditProfileViewController: UIViewController {
         }
         
     }
-
+    
 }

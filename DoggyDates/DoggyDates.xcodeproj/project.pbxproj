@@ -103,6 +103,14 @@
 			name = "Viewing and Editing Profile";
 			sourceTree = "<group>";
 		};
+		AF015F4D1ED183FE00056164 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AF574F0E1EC47E6500149E98 /* SettingsMenuViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		AF0CBFA41ECD802F00F30E9E /* Browse for Friends */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +158,7 @@
 		AFFD39BD1EB9B8C60007B744 /* DoggyDates */ = {
 			isa = PBXGroup;
 			children = (
+				AF015F4D1ED183FE00056164 /* Settings */,
 				AF015F4C1ED1311800056164 /* Viewing and Editing Profile */,
 				AF0CBFA41ECD802F00F30E9E /* Browse for Friends */,
 				AF013CF11EC562DD000D91BA /* Profile Setup */,
@@ -163,7 +172,6 @@
 				AFFD39CD1EB9B8C60007B744 /* Info.plist */,
 				AF0586551EC08C1200AB41DD /* GoogleService-Info.plist */,
 				AFFD39C51EB9B8C60007B744 /* DoggyDates.xcdatamodeld */,
-				AF574F0E1EC47E6500149E98 /* SettingsMenuViewController.swift */,
 			);
 			path = DoggyDates;
 			sourceTree = "<group>";

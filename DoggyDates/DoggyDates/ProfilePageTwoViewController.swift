@@ -28,6 +28,8 @@ class ProfilePageTwoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var petBreedTxtFld: UITextField!
     @IBOutlet weak var disclaimerLbl: UILabel!
 
+    @IBOutlet var loadSpinner: UIActivityIndicatorView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,26 +97,17 @@ class ProfilePageTwoViewController: UIViewController, UITextFieldDelegate {
  
 
     @IBAction func profilePg2CompleteBtn(_ sender: UIButton) {
+        
+        spinnerAnimation()
+        
         // ensure data is linked to user that just registered
         let uid = FIRAuth.auth()?.currentUser?.uid
         
         let petName = petNameTxtFld.text
         let petAge = petAgeTxtFld.text
         let petBreed = petBreedTxtFld.text
-        var petSex = ""
         var petAgeMMYY = ""
 
-    /*
-        // determine the age range selected from the 2 segmented controls
-        switch petSexSelected.selectedSegmentIndex {
-        case 0:
-            petSex = ("Male" as String)
-        case 1:
-            petSex = ("Female" as String)
-        default: break
-        }
-    */
-        
         // determine the age in months or years
         switch petAgeSelected.selectedSegmentIndex {
         case 0:
@@ -127,6 +120,7 @@ class ProfilePageTwoViewController: UIViewController, UITextFieldDelegate {
         // single male selected
         if petSexSelected.selectedSegmentIndex == 0 {
             let male = "Male"
+            let emptyBio = "Edit profile to add a Bio"
             // save profile image to firebase
             let imageName = NSUUID().uuidString
             let storageRef = FIRStorage.storage().reference().child("pet_profile_images").child("\(imageName).png")
@@ -137,7 +131,7 @@ class ProfilePageTwoViewController: UIViewController, UITextFieldDelegate {
                         return
                     }
                     if let petProfileImageUrl = metadata?.downloadURL()?.absoluteString {
-                        let values = ["petName": petName, "petAge": petAge, "petAgeMMYY": petAgeMMYY, "petGender": male, "petProfileImageUrl": petProfileImageUrl]
+                        let values = ["petName": petName, "petAge": petAge, "petAgeMMYY": petAgeMMYY, "petGender": male, "petBreed": petBreed, "petBio": emptyBio, "petProfileImageUrl": petProfileImageUrl]
                         self.registerUserIntoDatabaseWithUID(uid: uid!, values: values as [String : AnyObject])
                     }
                 })
@@ -147,6 +141,7 @@ class ProfilePageTwoViewController: UIViewController, UITextFieldDelegate {
             // single female selected
         else if petSexSelected.selectedSegmentIndex == 1 {
             let female = "Female"
+            let emptyBio = "Edit profile to add a Bio"
             // save profile image to firebase
             let imageName = NSUUID().uuidString
             let storageRef = FIRStorage.storage().reference().child("pet_profile_images").child("\(imageName).png")
@@ -157,17 +152,28 @@ class ProfilePageTwoViewController: UIViewController, UITextFieldDelegate {
                         return
                     }
                     if let petProfileImageUrl = metadata?.downloadURL()?.absoluteString {
-                        let values = ["petName": petName, "petAge": petAge, "petAgeMMYY": petAgeMMYY, "petGender": female, "petProfileImageUrl": petProfileImageUrl]
+                        let values = ["petName": petName, "petAge": petAge, "petAgeMMYY": petAgeMMYY, "petGender": female, "petBreed": petBreed, "petBio": emptyBio, "petProfileImageUrl": petProfileImageUrl]
                         self.registerUserIntoDatabaseWithUID(uid: uid!, values: values as [String : AnyObject])
                     }
+                    self.loadSpinner.stopAnimating()
+                    self.performSegue(withIdentifier: "ProfilePgTwoToPgThreeSegue", sender: self)
                 })
             }
         }
+
     }
 
+    func spinnerAnimation() {
+        loadSpinner.isHidden = false
+        // if loadSpinner is not animated
+        if loadSpinner.isAnimating == false {
+            // start animation
+            loadSpinner.startAnimating()
+        }
+    }
     
     private func registerUserIntoDatabaseWithUID(uid: String, values: [String: AnyObject]) {
-        
+
         let ref = FIRDatabase.database().reference(fromURL: "https://doggydates-384b3.firebaseio.com/")
         // create child nodes within firebase
         let usersReference = ref.child("users").child(uid)
@@ -179,6 +185,8 @@ class ProfilePageTwoViewController: UIViewController, UITextFieldDelegate {
             }
             print("Added additional details to user")
             print(values)
+
+
         })
     }
     
@@ -199,16 +207,6 @@ class ProfilePageTwoViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

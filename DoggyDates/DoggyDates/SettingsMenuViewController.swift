@@ -50,10 +50,10 @@ class SettingsMenuViewController: UIViewController{
     func fetchUser() {
         FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String : AnyObject] {
-                let user = User()
-                user.setValuesForKeys(dictionary)
-                self.users.append(user)
-                print(user.name1, user.email)
+                //let user = User()
+                //user.setValuesForKeys(dictionary)
+                //self.users.append(user)
+                //print(user.name1, user.email)
                 
                 // reloading table in dispatch queue so app doesn't crash
                 DispatchQueue.main.async {
